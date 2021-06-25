@@ -1,0 +1,108 @@
+name: Fraction
+description: Fraction by Boss90
+version: 0.1 BETA
+main: ru.Boss90.roleplay.main
+softdepend: [PlaceholderAPI]
+commands:
+   boss90:
+      description: MSSTUDIO ROLEPLAY
+      usage: /boss90
+   work:
+      description: Work
+      usage: /work
+   cuff:
+      description: cuff
+      usage: /work
+   leaders:
+      description: leaders
+      usage: /work
+   ra:
+      description: ra
+      usage: /ra
+   givepassport:
+      description: ra
+      usage: /ra
+   base:
+      description: ra
+      usage: /ra
+   givemilitary:
+      description: ra
+      usage: /ra
+   setbase:
+      description: ra
+      usage: /ra
+   givemed:
+      description: ra
+      usage: /ra
+   gender:
+      description: ra
+      usage: /ra
+   marklist:
+      description: ra
+      usage: /ra
+   block:
+      description: ra
+      usage: /ra
+   unblock:
+      description: ra
+      usage: /ra
+   arrest:
+      description: Arrest
+      usage: /arrest [Player] [Time] [Rule]
+   unarrest:
+      description: UNArrest
+      usage: /unarrest [Player]
+   withdrawtown:
+      description: UNArrest
+      usage: /unarrest [Player]
+   prison:
+      description: Prison
+      usage: /prison
+   setsalary:
+      description: Set salary
+      usage: /setsalary [Work] [Money]
+   makeleader:
+      description: set leader
+      usage: /makeleader [work] [nickname]
+   givestudy:
+      description: Give Study
+      usage: /givestudy
+   weekreset:
+      description: week reset
+      usage: /weekreset
+   setrank:
+      description: week reset
+      usage: /weekreset
+   helpme:
+      description: Help Me!
+      usage: /helpme [Message]
+   answer:
+      description: Answer
+      usage: /answer [Player] [Message]
+   resetstars:
+      description: Reset stars
+      usage: /resetstars [Player]
+   setstars:
+      description: Set stars
+      usage: /setstars [Player] [Number]
+   passport:
+      description: Passport
+      usage: /passport
+   mark:
+      description: Mark 2Player
+      usage: /mark
+   hp:
+      description: Hp
+      usage: /hp
+   shtraf:
+      description: oshtrafovat
+      usage: /shtraf
+   townmoney:
+      description: Town money
+      usage: /townmoney
+   holotownmoney:
+      description: okda
+      usage: /holotownmoney
+   towndonate:
+      description: Donate to town
+      usage: /towndonate

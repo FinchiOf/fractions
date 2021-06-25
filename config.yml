@@ -1,0 +1,81 @@
+# 
+# ������� ����� ������ ����������
+mysql:
+  host: 127.0.0.1
+  user: root
+  password: root
+  base: roleplay
+starsymbol: ✩
+nachalo: '&f[&bMSStudio&f] '
+MeriaDesc: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+PoliceDesc: пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+PoliDesc: пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+projname: '&bHardWorld '
+Workregion: meria
+xpris: 1
+ypris: 1
+zpris: 1
+xprisafter: 50
+yprisafter: 70
+zprisafter: 100
+mer: '-'
+sherif: Boss90
+weekhours: 2
+maxarresttime: 60
+minarresttime: 10
+JailRegion: jail
+glvrach: '-'
+meria1: 450
+meria2: 500
+meria3: 700
+meria4: 1000
+meria5: 1500
+meria6: 2000
+meria7: 3000
+meria8: 4500
+police1: 500
+police2: 550
+police3: 600
+police4: 700
+police5: 800
+police6: 1000
+police7: 1500
+police8: 2000
+police9: 3000
+police10: 4500
+hospital1: 500
+hospital2: 600
+hospital3: 650
+hospital4: 700
+hospital5: 1500
+hospital6: 2000
+hospital7: 3000
+hospital8: 4500
+superloc: 43 65 35
+boardupdate: 20
+boardname: '&6&lRoleplay'
+scoreboard:
+- '&1 '
+- ' &fИмя: &6%player%'
+- ' &fРабота: &b%job%'
+- ' &fОбразование: &c%education%'
+- '&2 '
+- ' &fПреступность &8» &f%stars%'
+- '&3 '
+- ' &fБаланс: &6%money% &7(вирты)'
+- '&4 '
+- ' &fСайт: &avk.com/MSStudioYou'
+- ' &fДонат: &a/donate'
+- '&5 '
+- ' Онлайн: &e%players%/100'
+prboardname: '&6&lRoleplay'
+prscoreboard:
+- '&1 '
+- ' &fИмя: &6%player%'
+- ' &fОсталось сидеть: %last%'
+- ' &fОбразование: &c%education%'
+- ' &fПреступность &8» &f%stars%'
+- '&3 '
+- ' &fБаланс: &6%money% '
+- '&4 ''
+townmoney: 1365736
