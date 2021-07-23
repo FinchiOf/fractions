@@ -12,7 +12,7 @@ public class ZamDoctorWork implements Work
     
     @Override
     public AccessLevel[] getAccess() {
-        return new AccessLevel[] { AccessLevel.HOSPITAL, AccessLevel.KICKHOSPITAL, AccessLevel.UPHOSPITAL, AccessLevel.HEALPLAYERS, AccessLevel.MEDCARTGIVE };
+        return new AccessLevel[] { AccessLevel.HOSPITAL, AccessLevel.KICKHOSPITAL, AccessLevel.UPHOSPITAL, AccessLevel.HEALPLAYERS, AccessLevel.baza };
     }
     
     @Override

@@ -60,9 +60,6 @@ public class Placeholders extends PlaceholderExpansion {
         if(identifier.equalsIgnoreCase("medcart")){
             return main.SQL.getMedCart(player.getName()).getName();
         }
-        if(identifier.equalsIgnoreCase("bilet")){
-            return main.SQL.getBilet(player.getName()).getName();
-        }
     	return null;
     }
     protected static String bld(final String s, final int f) {

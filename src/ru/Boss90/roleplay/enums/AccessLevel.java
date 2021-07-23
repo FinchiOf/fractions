@@ -17,9 +17,12 @@ public enum AccessLevel
     UPPOLICE("Повышение (Полиция)"), 
     ARRESTPLAYER("Сажать в тюрьму"), 
     UNKICKABLE("Нельзя уволить"), 
-    HEALPLAYERS("Лечение игроков"), 
+    POLIC("Политика"), 
+    KICKPOLIC("Увольнение (Политика)"), 
+    UPPOLIC("Повышение (Политика)"), 
+    HEALPLAYERS("Лечение игроков (/hp)"), 
     PASSPORTINFO("Смотреть паспорты без запроса"), 
-    SEKRETARUTILS("Работа секретарём"), 
+    SEKRETARUTILS("Отвечать на вопросы граждан"), 
     SETSALARY("Установка зарплаты"), 
     SHTRAF("Выписывание штрафов"), 
     UNARREST("Освобождение преступников"),
@@ -28,7 +31,9 @@ public enum AccessLevel
     RESETSTARS("Снятие розыска"),
     KAZNA("Полный доступ к казне города"),
     GIVEBILET("Выдача военного билета"),
-    MEDCARTGIVE("Выдача мед.карты");
+    MEDCARTGIVE("Выдача мед.карты"),
+    Cuff("Заковывать в наручники (/cuff)"),
+    baza("Просмотр базы данных города [СКОРО..]");
     
     private String name;
     

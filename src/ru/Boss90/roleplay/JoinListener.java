@@ -24,6 +24,13 @@ public class JoinListener implements Listener
     }
     
     @EventHandler
+    public void click(final InventoryClickEvent event) {
+        if (ChatColor.stripColor(event.getInventory().getName()).equalsIgnoreCase("Паспорт")) {
+            event.setCancelled(true);
+        }
+    }
+    
+    @EventHandler
     public void joins(final PlayerJoinEvent event) {
         if (main.SQL.getFuckinTyuremshiki().contains(event.getPlayer().getName()) && main.SQL.getPlayerTimeinPris(event.getPlayer().getName()) <= 0) {
             main.SQL.vishelPris(event.getPlayer().getName());

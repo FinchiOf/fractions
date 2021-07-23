@@ -19,7 +19,7 @@ public class ArrestCmd implements CommandExecutor, Listener
 	public ArrestCmd() {
         this.plugin = (Plugin)main.getPlugin((Class)main.class);
         this.forall = this.plugin.getConfig().getString("nachalo");
-        this.nachalo = new StringBuilder().append(ChatColor.GOLD).append(ChatColor.BOLD).append("Работы > ").toString();
+        this.nachalo = new StringBuilder().append(ChatColor.AQUA).append(ChatColor.BOLD).append("Работы > ").toString();
     }
     
     public boolean onCommand(final CommandSender sender, final Command cmd, final String commandlabel, final String[] args) {
@@ -82,9 +82,6 @@ public class ArrestCmd implements CommandExecutor, Listener
                 sender.sendMessage(this.forall + ChatColor.WHITE + "Игрок посажен в тюрьму.");
                 p.teleport(new Location(p.getWorld(), this.plugin.getConfig().getDouble("xpris"), this.plugin.getConfig().getDouble("ypris"), this.plugin.getConfig().getDouble("zpris")));
                 p.sendMessage(this.forall + ChatColor.WHITE + "Вы посажены в тюрьму на " + ChatColor.AQUA + st*10 + ChatColor.WHITE + " минут по причине: " + rule + "! Ваш телефон отключён.");
-                Bukkit.getScheduler().runTaskTimer(main.getInstance(), () -> {
-                    p.teleport(new Location(p.getWorld(), this.plugin.getConfig().getDouble("xpris"), this.plugin.getConfig().getDouble("ypris"), this.plugin.getConfig().getDouble("zpris")));
-        		},1200, 1200);
                 cuff.cuffing.remove(p);
                 return true;
             }

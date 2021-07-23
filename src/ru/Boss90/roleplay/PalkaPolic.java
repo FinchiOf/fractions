@@ -10,6 +10,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.Plugin;
@@ -27,9 +28,11 @@ public class PalkaPolic implements Listener {
 		this.plugin = (Plugin) main.getPlugin((Class) main.class);
 		this.forall = this.plugin.getConfig().getString("nachalo").replace("&", "§");
 	}
-
 	@EventHandler
 	public void onDamage(PlayerInteractEntityEvent e) throws NullPointerException{
+		if(e.getPlayer().getOpenInventory() != null) {
+			return;
+		}
 		if (e.getRightClicked().getType() != EntityType.PLAYER) {
 			return;
 		}
@@ -105,6 +108,19 @@ public class PalkaPolic implements Listener {
 
 	@EventHandler
 	public void OnCommand(PlayerQuitEvent e) {
+		if (da.contains(e.getPlayer())) {
+			main.SQL.setInPrison(e.getPlayer().getName(), 60);
+			e.getPlayer().teleport(new Location(e.getPlayer().getWorld(), this.plugin.getConfig().getDouble("xpris"),
+					this.plugin.getConfig().getDouble("ypris"), this.plugin.getConfig().getDouble("zpris")));
+		}
+		if (cuff.cuffing.contains(e.getPlayer())) {
+			main.SQL.setInPrison(e.getPlayer().getName(), 60);
+			e.getPlayer().teleport(new Location(e.getPlayer().getWorld(), this.plugin.getConfig().getDouble("xpris"),
+					this.plugin.getConfig().getDouble("ypris"), this.plugin.getConfig().getDouble("zpris")));
+		}
+	}
+	@EventHandler
+	public void OnCommand(PlayerKickEvent e) {
 		if (da.contains(e.getPlayer())) {
 			main.SQL.setInPrison(e.getPlayer().getName(), 60);
 			e.getPlayer().teleport(new Location(e.getPlayer().getWorld(), this.plugin.getConfig().getDouble("xpris"),

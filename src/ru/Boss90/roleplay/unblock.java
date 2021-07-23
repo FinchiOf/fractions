@@ -35,7 +35,11 @@ public class unblock implements CommandExecutor {
                 players.remove(args[0]);
                 plugin.getConfig().set("BlackListPolice", players);
                 plugin.saveConfig();
-                RaEvents.police.forEach(p3 -> p3.sendMessage(nachalo + ChatColor.WHITE + "[Полиция: Информация] "+args[0]+" был убран из чёрного списка высшем чином " + sender.getName()));
+				for (final Player peha : Bukkit.getOnlinePlayers()) {
+					if (main.SQL.getPlayerRabota(peha.getName()).getFraction().equals(Fraction.POLICE)) {
+						peha.sendMessage(nachalo + ChatColor.WHITE + "[Полиция: Информация] "+args[0]+" был убран из чёрного списка высшем чином " + sender.getName());
+					}
+				}
 			}
 			break;
 		case("Больница"):
@@ -45,7 +49,11 @@ public class unblock implements CommandExecutor {
                 players.remove(args[0]);
                 plugin.getConfig().set("BlackListHospital", players);
                 plugin.saveConfig();
-                RaEvents.hospital.forEach(p3 -> p3.sendMessage(nachalo + ChatColor.WHITE + "[Больница: Информация] "+args[0]+" был убран из чёрного списка высшем чином " + sender.getName()));
+				for (final Player peha : Bukkit.getOnlinePlayers()) {
+					if (main.SQL.getPlayerRabota(peha.getName()).getFraction().equals(Fraction.HOSPITAL)) {
+						peha.sendMessage(nachalo + ChatColor.WHITE + "[Больница: Информация] "+args[0]+" был убран из чёрного списка высшем чином " + sender.getName());
+					}
+				}
 			}
 			break;
 		case("Мэрия"):
@@ -55,17 +63,11 @@ public class unblock implements CommandExecutor {
                 players.remove(args[0]);
                 plugin.getConfig().set("BlackListMeria", players);
                 plugin.saveConfig();
-                RaEvents.meria.forEach(p3 -> p3.sendMessage(nachalo + ChatColor.WHITE + "[Мэрия: Информация] "+args[0]+" был убран из чёрного списка высшем чином " + sender.getName()));
-			}
-			break;
-		case("Армия"):
-			if(main.SQL.getPlayerRabota(sender.getName()).getNumber() >= 7) {
-                List<String> players = plugin.getConfig().getStringList("BlackListArmia");
-				sender.sendMessage(nachalo +ChatColor.WHITE +"Вы убрали в ЧС игрока " + args[0]);
-                players.remove(args[0]);
-                plugin.getConfig().set("BlackListArmia", players);
-                plugin.saveConfig();
-                RaEvents.armia.forEach(p3 -> p3.sendMessage(nachalo + ChatColor.WHITE + "[Армия: Информация] "+args[0]+" был убран из чёрного списка высшем чином " + sender.getName()));
+				for (final Player peha : Bukkit.getOnlinePlayers()) {
+					if (main.SQL.getPlayerRabota(peha.getName()).getFraction().equals(Fraction.MERIA)) {
+						peha.sendMessage(nachalo + ChatColor.WHITE + "[Мэрия: Информация] "+args[0]+" был убран из чёрного списка высшем чином " + sender.getName());
+					}
+				}
 			}
 			break;
 		default:

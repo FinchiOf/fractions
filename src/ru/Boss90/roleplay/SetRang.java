@@ -19,8 +19,8 @@ public class SetRang implements CommandExecutor {
     }
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String str, String[] args) {
-		if(!sender.isOp()) {
-			sender.sendMessage(ChatColor.RED+"мне не интересно, откуда ты узнал эту команду. Мне интересно, зачем ты её прописал, на что ты надеялся?");
+		if(!sender.hasPermission("Fraction.SetRank")) {
+			sender.sendMessage(ChatColor.DARK_RED+"Error:"+ChatColor.RED+" У вас недостаточно прав!");
 			return true;
 		}
 		if(args.length == 0) {
@@ -35,8 +35,8 @@ public class SetRang implements CommandExecutor {
 		main.SQL.setrabota(args[0], WorkFactory.loadedWorks.get(Integer.valueOf(args[1])));
 		sender.sendMessage(nachalo + ChatColor.WHITE+"Вы сетнули ранг "+WorkFactory.loadedWorks.get(Integer.valueOf(args[1])).getName()+" игроку "+ args[0]);
 		}catch(NullPointerException e) {
-			sender.sendMessage(nachalo + ChatColor.WHITE+"Такого звания не существует!");
 			e.printStackTrace();
+			sender.sendMessage(nachalo + ChatColor.WHITE+"Такого звания не существует!");
 		}
 		return true;
 	}

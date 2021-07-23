@@ -12,7 +12,7 @@ public class CledyashiiHospital implements Work
     
     @Override
     public AccessLevel[] getAccess() {
-        return new AccessLevel[] { AccessLevel.HOSPITAL, AccessLevel.KICKHOSPITAL, AccessLevel.UPHOSPITAL, AccessLevel.UNKICKABLE, AccessLevel.HEALPLAYERS, AccessLevel.SETSALARY, AccessLevel.MEDCARTGIVE };
+        return new AccessLevel[] { AccessLevel.HOSPITAL, AccessLevel.KICKHOSPITAL, AccessLevel.UPHOSPITAL, AccessLevel.UNKICKABLE, AccessLevel.HEALPLAYERS, AccessLevel.SETSALARY, AccessLevel.MEDCARTGIVE, AccessLevel.baza };
     }
     
     @Override

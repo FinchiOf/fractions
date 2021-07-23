@@ -12,7 +12,7 @@ public class HirurgWork implements Work
     
     @Override
     public AccessLevel[] getAccess() {
-        return new AccessLevel[] { AccessLevel.HOSPITAL, AccessLevel.HEALPLAYERS, AccessLevel.MEDCARTGIVE };
+        return new AccessLevel[] { AccessLevel.HOSPITAL, AccessLevel.HEALPLAYERS, AccessLevel.MEDCARTGIVE, AccessLevel.baza };
     }
     
     @Override

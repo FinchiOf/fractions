@@ -5,8 +5,7 @@ public enum Fraction
     NONE("Не имеется", 0), 
     MERIA("Мэрия", 1), 
     POLICE("Полиция", 9), 
-    HOSPITAL("Больница", 19),
-    ARMIA("Армия", 27);
+    HOSPITAL("Больница", 19);
     
     private String name;
     private int defaultwork;

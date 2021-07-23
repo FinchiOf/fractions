@@ -12,7 +12,7 @@ public class GlDoctorWork implements Work
     
     @Override
     public AccessLevel[] getAccess() {
-        return new AccessLevel[] { AccessLevel.HOSPITAL, AccessLevel.KICKHOSPITAL, AccessLevel.UPHOSPITAL, AccessLevel.UNKICKABLE, AccessLevel.HEALPLAYERS, AccessLevel.MEDCARTGIVE };
+        return new AccessLevel[] { AccessLevel.HOSPITAL, AccessLevel.KICKHOSPITAL, AccessLevel.UPHOSPITAL, AccessLevel.UNKICKABLE, AccessLevel.HEALPLAYERS, AccessLevel.MEDCARTGIVE, AccessLevel.baza };
     }
     
     @Override

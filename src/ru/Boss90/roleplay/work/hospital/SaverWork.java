@@ -12,7 +12,7 @@ public class SaverWork implements Work
     
     @Override
     public AccessLevel[] getAccess() {
-        return new AccessLevel[] { AccessLevel.HOSPITAL, AccessLevel.HEALPLAYERS };
+        return new AccessLevel[] { AccessLevel.HOSPITAL,  AccessLevel.HEALPLAYERS };
     }
     
     @Override

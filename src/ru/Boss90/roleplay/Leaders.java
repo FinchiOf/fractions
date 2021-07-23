@@ -21,10 +21,9 @@ public class Leaders implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command cmd, String str, String[] args) {
 		Player p = (Player) sender;
         p.sendMessage(this.forall + ChatColor.WHITE + "Лидеры всех фракций: ");
-        p.sendMessage(ChatColor.YELLOW + "Мэрия " + ChatColor.WHITE + "- " + this.plugin.getConfig().getString("mer").replace("-", ChatColor.RED+"лидера не существует") + (this.isOnline(this.plugin.getConfig().getString("mer")) ? " §a[ON] §eт.*****" : " §c[OFF] §eт.*****"));
-        p.sendMessage(ChatColor.BLUE + "Полиция " + ChatColor.WHITE + "- " + this.plugin.getConfig().getString("sherif").replace("-", ChatColor.RED+"лидера не существует") + (this.isOnline(this.plugin.getConfig().getString("sherif")) ? " §a[ON] §eт.*****" : " §c[OFF] §eт.*****"));
-        p.sendMessage(ChatColor.RED + "Больница " + ChatColor.WHITE + "- " + this.plugin.getConfig().getString("glvrach").replace("-", ChatColor.RED+"лидера не существует") + (this.isOnline(this.plugin.getConfig().getString("glvrach")) ? " §a[ON] §eт.*****" : " §c[OFF] §eт.*****"));
-        p.sendMessage(ChatColor.DARK_GREEN + "Армия " + ChatColor.WHITE + "- " + this.plugin.getConfig().getString("general").replace("-", ChatColor.RED+"лидера не существует") + (this.isOnline(this.plugin.getConfig().getString("general")) ? " §a[ON] §eт.*****" : " §c[OFF] §eт.*****"));
+        p.sendMessage(ChatColor.YELLOW + "Мэрия " + ChatColor.WHITE + "- " + this.plugin.getConfig().getString("mer").replace("-", ChatColor.RED+"Лидера нет.") + (this.isOnline(this.plugin.getConfig().getString("mer")) ? " §a[ON] §eт.*****" : " §c[OFF] §eт.*****"));
+        p.sendMessage(ChatColor.BLUE + "Полиция " + ChatColor.WHITE + "- " + this.plugin.getConfig().getString("sherif").replace("-", ChatColor.RED+"Лидера нет.") + (this.isOnline(this.plugin.getConfig().getString("sherif")) ? " §a[ON] §eт.*****" : " §c[OFF] §eт.*****"));
+        p.sendMessage(ChatColor.RED + "Больница " + ChatColor.WHITE + "- " + this.plugin.getConfig().getString("glvrach").replace("-", ChatColor.RED+"Лидера нет.") + (this.isOnline(this.plugin.getConfig().getString("glvrach")) ? " §a[ON] §eт.*****" : " §c[OFF] §eт.*****"));
 		return true;
 	}
     public boolean isOnline(final String playerName) {

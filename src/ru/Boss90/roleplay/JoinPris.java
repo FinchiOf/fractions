@@ -14,7 +14,7 @@ public class JoinPris implements Listener
         this.plugin = (Plugin)main.getPlugin((Class)main.class);
     }
     
-    @EventHandler(priority = EventPriority.LOWEST)
+    @EventHandler
     public void joinsas(final PlayerJoinEvent event) {
         if (!main.SQL.hasValue(event.getPlayer().getName())) {
             main.SQL.writeToRoleplay(event.getPlayer().getName());

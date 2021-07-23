@@ -24,7 +24,7 @@ public class Cledyashii implements Work {
 	@Override
 	public AccessLevel[] getAccess() {
 		return new AccessLevel[] { AccessLevel.MERIA, AccessLevel.SEKRETARUTILS, AccessLevel.UNARREST,
-				AccessLevel.KICKMERIA, AccessLevel.UPMERIA, AccessLevel.PASSPORTINFO, AccessLevel.SETSALARY, AccessLevel.PASSPORTGIVE };
+				AccessLevel.KICKMERIA, AccessLevel.UPMERIA, AccessLevel.PASSPORTINFO, AccessLevel.SETSALARY, AccessLevel.PASSPORTGIVE, AccessLevel.baza };
 	}
 
 	@Override

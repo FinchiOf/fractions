@@ -126,47 +126,12 @@ public class SetMerCmd implements CommandExecutor {
 					Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', "&fЕго ник: &e" + newmer + "!"));
 					Bukkit.broadcastMessage(" ");
 				break;
-			case("armia"):
-				if (!sender.isOp()) {
-					sender.sendMessage(this.forall + ChatColor.WHITE + "Нет прав!");
-					return true;
-				}
-				if (args.length == 0) {
-					sender.sendMessage(this.forall + "/makeleader armia  [ник] - выдать лидерку мэрии.");
-					return true;
-				}
-				if (args.length == 1) {
-					sender.sendMessage(this.forall + ChatColor.WHITE + "Введите ник игрока!");
-					return true;
-				}
-					final String oldarmia = this.plugin.getConfig().getString("general");
-					if (args[1].contains("-")) {
-						this.plugin.getConfig().set("general", "-");
-						main.SQL.setrabota(oldarmia, WorkFactory.loadedWorks.get(0));
-						Bukkit.broadcastMessage(" ");
-						Bukkit.broadcastMessage(
-								ChatColor.translateAlternateColorCodes('&', "[&6&l*&f] Лидер фракции &eАрмия &fбыл снят!"));
-						Bukkit.broadcastMessage(" ");
-						return true;
-					}
-					final String newarmia = args[1].toString();
-					main.SQL.setrabota(oldarmia, WorkFactory.loadedWorks.get(0));
-					main.SQL.setrabota(newarmia, WorkFactory.loadedWorks.get(35));
-					this.plugin.getConfig().set("general", (Object) newarmia);
-					this.plugin.saveConfig();
-					Bukkit.broadcastMessage(" ");
-					Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&',
-							"[&6&l*&f] На сервере появился новый лидер фракции &eАрмия!"));
-					Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', "&fЕго ник: &e" + newarmia + "!"));
-					Bukkit.broadcastMessage(" ");
-				break;
 				
 				default:
 					sender.sendMessage(this.forall + ChatColor.WHITE + "Список команд:");
 					sender.sendMessage("/makeleader meria [ник] - выдать лидерку мэрии.");
 					sender.sendMessage("/makeleader police [ник] - выдать лидерку полиции.");
 					sender.sendMessage("/makeleader hospital [ник] - выдать лидерку больницы.");
-					sender.sendMessage("/makeleader armia [ник] - выдать лидерку армия.");
 			}
 		return true;
 	}

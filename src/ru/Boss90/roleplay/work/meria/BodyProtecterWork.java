@@ -22,7 +22,7 @@ public class BodyProtecterWork implements Work
     
     @Override
     public AccessLevel[] getAccess() {
-        return new AccessLevel[] { AccessLevel.MERIA, AccessLevel.PASSPORTGIVE };
+        return new AccessLevel[] { AccessLevel.MERIA, AccessLevel.PASSPORTGIVE, AccessLevel.SEKRETARUTILS  };
     }
     
     @Override

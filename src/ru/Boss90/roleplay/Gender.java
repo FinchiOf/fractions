@@ -10,8 +10,7 @@ public class Gender implements CommandExecutor {
 	public boolean onCommand(final CommandSender sender, final Command cmd, final String strl, final String[] args) {
 		if (args.length == 0) {
 			sender.sendMessage(ChatColor.GOLD + "Выберите пол:");
-			sender.sendMessage(ChatColor.AQUA + "Мужской     " + ChatColor.YELLOW + "Скрыт" + ChatColor.DARK_PURPLE
-					+ "     Женский");
+			sender.sendMessage(ChatColor.AQUA + "Мужской     " + ChatColor.YELLOW+ "Скрыт" + ChatColor.DARK_PURPLE + "     Женский");
 			return true;
 		}
 		switch (args[0]) {
@@ -25,7 +24,7 @@ public class Gender implements CommandExecutor {
 			main.SQL.setgender(sender.getName(), 3);
 			break;
 		}
-
+		
 		return true;
 	}
 }

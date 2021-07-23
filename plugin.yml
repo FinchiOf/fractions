@@ -25,9 +25,6 @@ commands:
    base:
       description: ra
       usage: /ra
-   givemilitary:
-      description: ra
-      usage: /ra
    setbase:
       description: ra
       usage: /ra
@@ -46,6 +43,18 @@ commands:
    unblock:
       description: ra
       usage: /ra
+   payday:
+      description: ra
+      usage: /ra
+   shtrafinfo:
+      description: ra
+      usage: /
+   shtrafpay:
+      description: ra
+      usage: /r
+   givemilitary:
+      description: ra
+      usage: /r
    arrest:
       description: Arrest
       usage: /arrest [Player] [Time] [Rule]

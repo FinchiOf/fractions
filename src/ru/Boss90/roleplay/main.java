@@ -2,14 +2,8 @@ package ru.Boss90.roleplay;
 
 import org.bukkit.plugin.java.*;
 import org.bukkit.scheduler.*;
-
-import me.clip.placeholderapi.PlaceholderAPI;
-import ru.Boss90.roleplay.enums.*;
 import ru.Boss90.roleplay.interfaces.*;
 import ru.Boss90.roleplay.work.*;
-
-import org.bukkit.inventory.*;
-import org.bukkit.inventory.meta.*;
 import org.bukkit.entity.*;
 import org.bukkit.event.*;
 import org.bukkit.command.*;
@@ -59,14 +53,6 @@ public class main extends JavaPlugin {
 		if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")){
 		    new Placeholders().register();
 		}
-		Bukkit.getScheduler().runTaskTimer((Plugin) this, (Runnable) new Runnable() {
-			@Override
-			public void run() {
-				if (Bukkit.getOnlinePlayers().isEmpty()) {
-					return;
-				}
-			}
-		}, (long) (20 * this.getConfig().getInt("boardupdate")), (long) (20 * this.getConfig().getInt("boardupdate")));
 		System.out.println(
 				"\u0428\u0415\u0414\u0423\u041b\u0415\u0420 \u041d\u0410 \u0412\u042b\u0414\u0410\u0427\u0423 \u0417\u0410\u0420\u041f\u041b\u0410\u0422 \u0420\u0410\u0417 \u0412 \u0427\u0410\u0421 \u041d\u0410\u0427\u0410\u041b\u0421\u042f");
 		this.forall = this.forall.replace("&", "§");
@@ -127,40 +113,20 @@ public class main extends JavaPlugin {
 					}
 				}
 			}
-		}, 1200L, 1200L);
-		Bukkit.getScheduler().runTaskTimer((Plugin) this, (Runnable) new Runnable() {
-			@SuppressWarnings({ "unchecked", "rawtypes" })
-			@Override
-			public void run() {
-				if (Bukkit.getOnlinePlayers().isEmpty()) {
-					return;
-				}
-				for (final Player peha : Bukkit.getOnlinePlayers()) {
-					if (main.SQL.getPlayerRabota(peha.getName()).getFraction().equals(Fraction.POLICE)) {
-						final ItemStack palka = new ItemStack(Material.STICK, 1);
-						final ItemMeta palkameta = palka.getItemMeta();
-						palkameta.setDisplayName(ChatColor.AQUA
-								+ "\u041f\u0430\u043b\u043a\u0430 \u043f\u043e\u043b\u0438\u0446\u0435\u0439\u0441\u043a\u043e\u0433\u043e");
-						final ArrayList<String> listos = new ArrayList<String>();
-						listos.add(ChatColor.GRAY
-								+ "\u0417\u0430\u043c\u043e\u0440\u0430\u0436\u0438\u0432\u0430\u0435\u0442 \u043f\u0440\u0435\u0441\u0442\u0443\u043f\u043d\u0438\u043a\u0430 \u043d\u0430 10 \u0441\u0435\u043a\u0443\u043d\u0434.");
-						palkameta.setLore((List) listos);
-						palka.setItemMeta(palkameta);
-						peha.getInventory().setItem(0, palka);
-					}
-				}
-			}
-		}, 3000L, 3000L);
+		}, 200L, 200L);
 		this.saveDefaultConfig();
+		VaultManager.init();
 		Bukkit.getPluginManager().registerEvents((Listener) new JoinListener(), (Plugin) this);
 		Bukkit.getPluginManager().registerEvents((Listener) new JoinPris(), (Plugin) this);
 		Bukkit.getPluginManager().registerEvents((Listener) new ArrestEvents(), (Plugin) this);
 		Bukkit.getPluginManager().registerEvents((Listener) new StarsEvents(), (Plugin) this);
 		Bukkit.getPluginManager().registerEvents((Listener) new RaEvents(), (Plugin) this);
+		Bukkit.getPluginManager().registerEvents((Listener) new PalkaPolic(), (Plugin) this);
 		Bukkit.getPluginManager().registerEvents((Listener) new ArrestCmd(), (Plugin) this);
 		this.getCommand("weekreset").setExecutor((CommandExecutor) new WeekResetCmd());
 		this.getCommand("marklist").setExecutor((CommandExecutor) new MarkCmd());
 		this.getCommand("cuff").setExecutor((CommandExecutor) new cuff());
+		this.getCommand("payday").setExecutor((CommandExecutor) new PayDay());
 		this.getCommand("givemed").setExecutor((CommandExecutor) new GiveMed());
 		this.getCommand("ra").setExecutor((CommandExecutor) new ra());
 		this.getCommand("setbase").setExecutor((CommandExecutor) new setbase());
@@ -173,7 +139,6 @@ public class main extends JavaPlugin {
 		this.getCommand("helpme").setExecutor((CommandExecutor) new SekretarCmd());
 		this.getCommand("answer").setExecutor((CommandExecutor) new SekretarCmd());
 		this.getCommand("mark").setExecutor((CommandExecutor) new MarkCmd());
-		this.getCommand("givemilitary").setExecutor((CommandExecutor) new GiviBilet());
 		this.getCommand("givepassport").setExecutor((CommandExecutor) new BookPasport());
 		this.getCommand("gender").setExecutor((CommandExecutor) new Gender());
 		this.getCommand("townmoney").setExecutor((CommandExecutor) new TownMoneyHandler());
@@ -187,6 +152,8 @@ public class main extends JavaPlugin {
 		this.getCommand("makeleader").setExecutor((CommandExecutor) new SetMerCmd());
 		this.getCommand("prison").setExecutor((CommandExecutor) new PrisonCmd());
 		this.getCommand("setsalary").setExecutor((CommandExecutor) new SetSalaryCmd());
+		this.getCommand("shtrafpay").setExecutor((CommandExecutor) new ShtrafCmdHandler());
+		this.getCommand("shtrafinfo").setExecutor((CommandExecutor) new ShtrafCmdHandler());
 		this.getCommand("givestudy").setExecutor((CommandExecutor) new GiveStudyCmd());
 		this.getCommand("resetstars").setExecutor((CommandExecutor) new AdminCmd());
 		this.getCommand("setstars").setExecutor((CommandExecutor) new AdminCmd());

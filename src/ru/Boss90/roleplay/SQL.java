@@ -14,22 +14,22 @@ public class SQL
     public SQL(final String host, final String base, final String user, final String password) {
         try {
             SQL.connection = DriverManager.getConnection("jdbc:mysql://" + host + ":3306/" + base, user, password);
-            this.update("CREATE TABLE IF NOT EXISTS `roleplay` (`player` varchar(50) NOT NULL,`work` int(11) NOT NULL,`education` int(11) NOT NULL,`stars` int(11) NOT NULL,`inprison` boolean NOT NULL,`time` int(11) NOT NULL,`sroki` int(11) NOT NULL,`gender` int(11) NOT NULL,`medcart` int(11) NOT NULL,`bilet` int(11) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8");
+            this.update("CREATE TABLE IF NOT EXISTS `roleplay` (`player` varchar(50) NOT NULL,`work` int(11) NOT NULL,`education` int(11) NOT NULL,`stars` int(11) NOT NULL,`inprison` boolean NOT NULL,`time` int(11) NOT NULL,`sroki` int(11) NOT NULL,`gender` int(11) NOT NULL,`medcart` int(11) NOT NULL,`straf` int(11) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8");
         }
         catch (Exception e) {
+        	System.out.println(e.toString());
             e.printStackTrace();
         }	
     }
     
-    public ResultSet query(final String query) {
+    public ResultSet query(String query) {
         try {
-            SQL.statement = SQL.connection.createStatement();
-            final ResultSet set = SQL.statement.executeQuery(query);
+            statement = connection.createStatement();
+            ResultSet set = statement.executeQuery(query);
             set.next();
             return set;
-        }
-        catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception var3) {
+            var3.printStackTrace();
             return null;
         }
     }
@@ -46,11 +46,15 @@ public class SQL
     }
     
     public void writeToRoleplay(final String player) {
-        this.update("INSERT INTO roleplay (`player`,`work`,`education`,`stars`,`inprison`,`time`,`sroki`,`gender`,`medcart`,`bilet`) VALUES ('" + player + "',0,0,0,'0',0,0,3,0,0);");
+        this.update("INSERT INTO roleplay (`player`,`work`,`education`,`stars`,`inprison`,`time`,`sroki`,`gender`,`medcart`,`straf`) VALUES ('" + player + "',0,0,0,'0',0,0,3,0,0);");
     }
     
     public void setrabota(final String player, final Work rabota) {
         this.update("UPDATE `roleplay` SET `work` = " + rabota.getCode() + " WHERE `player`='" + player + "';");
+    }
+    
+    public void setstraf(String player, int straf) {
+        this.update("UPDATE `roleplay` SET `straf` = " + straf + " WHERE `player`='" + player + "';");
     }
     
     public void plusstars(final String player, final int stars) {
@@ -59,6 +63,14 @@ public class SQL
     
     public void minusstars(final String player, final int stars) {
         this.update("UPDATE `roleplay` SET `stars` = stars - '" + stars + "' WHERE `player` = '" + player + "';");
+    }
+    
+    public void pluswarn(final String player, final int stars) {
+        this.update("UPDATE `roleplay` SET `warn` = warn + '" + stars + "' WHERE `player` = '" + player + "';");
+    }
+    
+    public void minuswarn(final String player, final int stars) {
+        this.update("UPDATE `roleplay` SET `warn` = warn - '" + stars + "' WHERE `player` = '" + player + "';");
     }
     
     public void setbilet(final String player, int bilet) {
@@ -96,6 +108,15 @@ public class SQL
         }
     }
     
+    public int getStraf(String player) {
+        try {
+            ResultSet set = this.query("SELECT `straf` FROM `roleplay` WHERE `player` = '" + player + "';");
+            return set.getInt("straf");
+        } catch (Exception var3) {
+            System.out.println("88 line, proeb");
+            return 0;
+        }
+    }
     
     public int getPlayerSroki(final String player) {
         try {
@@ -120,15 +141,14 @@ public class SQL
         }
     }
     
-    public VoeniiBilet getBilet(final String player) {
+    public int getPlayerWarn(final String player) {
         try {
-            final ResultSet set = this.query("SELECT `bilet` FROM `roleplay` WHERE `player` = '" + player + "';");
-            final int code = set.getInt("bilet");
-            return VoeniiBilet.fromCode(code);
+            final ResultSet set = this.query("SELECT `warn` FROM `roleplay` WHERE `player` = '" + player + "';");
+            return set.getInt("warn");
         }
         catch (Exception e) {
-            System.out.println("161 line, proeb");
-            return VoeniiBilet.NONE;
+            System.out.println("98 line, proeb");
+            return 0;
         }
     }
     
@@ -224,15 +244,51 @@ public class SQL
     }
     
     public ArrayList<String> getAllWorkers() {
-        final ArrayList<String> list = new ArrayList<String>();
+        ArrayList list = new ArrayList();
+
         try {
-            final ResultSet set = this.query("SELECT `player` FROM `roleplay` WHERE `work` > 0;");
-            while (set.next()) {
+            ResultSet set = this.query("SELECT * FROM `roleplay`;");
+
+            while(set.next()) {
                 list.add(set.getString("player"));
             }
+
+            return list;
+        } catch (Exception var3) {
+            System.out.println("195 line, proeb");
             return list;
         }
-        catch (Exception e) {
+    }
+    
+    public ArrayList<String> getAllPolice() {
+        ArrayList list = new ArrayList();
+
+        try {
+            ResultSet set = this.query("SELECT * FROM `roleplay` WHERE `work` = 'work' ");
+
+            while(set.next()) {
+                list.add(set.getString("player"));
+            }
+
+            return list;
+        } catch (Exception var3) {
+            System.out.println("195 line, proeb");
+            return list;
+        }
+    }
+    
+    public ArrayList<String> getAllRank() {
+        ArrayList<String> list = new ArrayList<>();
+
+        try {
+            ResultSet set = this.query("SELECT * FROM `roleplay`;");
+
+            while(set.next()) {
+                list.add(set.getString("work"));
+            }
+
+            return list;
+        } catch (Exception var3) {
             System.out.println("195 line, proeb");
             return list;
         }
@@ -241,7 +297,7 @@ public class SQL
     public ArrayList<String> getFivePlayers() {
         final ArrayList<String> list = new ArrayList<String>();
         try {
-            final ResultSet set = this.query("SELECT `player` FROM `roleplay` WHERE `stars` >= 4;");
+            final ResultSet set = this.query("SELECT `player` FROM `roleplay` WHERE `stars` >= 1;");
             while (set.next()) {
                 list.add(set.getString("player"));
             }

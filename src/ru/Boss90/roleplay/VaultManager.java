@@ -7,15 +7,16 @@ import org.bukkit.plugin.*;
 
 public class VaultManager
 {
-    @SuppressWarnings("rawtypes")
-	public static void withdraw(final Player p, final int summ) {
-        @SuppressWarnings("unchecked")
-		final RegisteredServiceProvider<Economy> rsp = (RegisteredServiceProvider<Economy>)Bukkit.getServicesManager().getRegistration((Class)Economy.class);
-        if (rsp == null) {
-            return;
-        }
-        final Economy econ = (Economy)rsp.getProvider();
-        econ.withdrawPlayer((OfflinePlayer)p, (double)summ);
+	private static Economy e;
+	public static void init() {
+		RegisteredServiceProvider<Economy> reg = Bukkit.getServicesManager().getRegistration(Economy.class);
+		if (reg != null) e = reg.getProvider();
+	}
+	public static boolean withdraw(final Player p, final int amount) {
+		if(e == null) return false;
+		
+		if(e.getBalance(p) < amount) return false;
+		return e.withdrawPlayer(p, amount).transactionSuccess();
     }
     
     @SuppressWarnings("unchecked")

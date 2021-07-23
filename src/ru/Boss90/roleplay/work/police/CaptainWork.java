@@ -22,7 +22,7 @@ public class CaptainWork implements Work
     
     @Override
     public AccessLevel[] getAccess() {
-        return new AccessLevel[] { AccessLevel.POLICE, AccessLevel.SHTRAF, AccessLevel.ARRESTPLAYER, AccessLevel.SETSTARS, AccessLevel.RESETSTARS};
+        return new AccessLevel[] { AccessLevel.POLICE, AccessLevel.SHTRAF, AccessLevel.ARRESTPLAYER, AccessLevel.SETSTARS, AccessLevel.RESETSTARS, AccessLevel.Cuff};
     }
     
     @Override

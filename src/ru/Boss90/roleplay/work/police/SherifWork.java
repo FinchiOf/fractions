@@ -22,7 +22,7 @@ public class SherifWork implements Work
     
     @Override
     public AccessLevel[] getAccess() {
-        return new AccessLevel[] { AccessLevel.POLICE, AccessLevel.SHTRAF, AccessLevel.ARRESTPLAYER, AccessLevel.PASSPORTINFO, AccessLevel.UPPOLICE, AccessLevel.KICKPOLICE, AccessLevel.UNKICKABLE, AccessLevel.UNARREST, AccessLevel.SETSTARS, AccessLevel.RESETSTARS };
+        return new AccessLevel[] { AccessLevel.POLICE, AccessLevel.SHTRAF, AccessLevel.ARRESTPLAYER, AccessLevel.PASSPORTINFO, AccessLevel.UPPOLICE, AccessLevel.KICKPOLICE, AccessLevel.UNKICKABLE, AccessLevel.UNARREST, AccessLevel.SETSTARS, AccessLevel.RESETSTARS, AccessLevel.Cuff, AccessLevel.baza };
     }
     
     @Override

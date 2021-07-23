@@ -22,7 +22,7 @@ public class OficerWork implements Work
     
     @Override
     public AccessLevel[] getAccess() {
-        return new AccessLevel[] { AccessLevel.POLICE };
+        return new AccessLevel[] { AccessLevel.POLICE, AccessLevel.Cuff, AccessLevel.SHTRAF };
     }
     
     @Override

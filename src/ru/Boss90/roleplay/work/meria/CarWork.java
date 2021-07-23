@@ -22,7 +22,7 @@ public class CarWork implements Work
     
     @Override
     public AccessLevel[] getAccess() {
-        return new AccessLevel[] { AccessLevel.MERIA };
+        return new AccessLevel[] { AccessLevel.MERIA, AccessLevel.SEKRETARUTILS };
     }
     
     @Override
